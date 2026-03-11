@@ -146,7 +146,7 @@ def main():
     xmax = np.max(np.abs(df['signed_contrast'].dropna()))
     xlims = np.linspace(-xmax, xmax, 200)
 
-    plt.rcParams['font.family'] = 'Arial'
+    plt.rcParams['font.family'] = 'Helvetica'
     sns.set_style("ticks")
     fig, ax = plt.subplots(figsize=(5.5, 5.5))
 

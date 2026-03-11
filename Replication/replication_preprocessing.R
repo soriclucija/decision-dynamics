@@ -16,6 +16,7 @@ compute_fa_windows <- function(subject_data) {
   contrast <- subject_data$stimContrast
   rt       <- subject_data$response_time
   pupil    <- subject_data$baseline_pupil
+  timeout  <- subject_data$timeout
   
   quintile_threshold <- quantile(rt, 0.80, na.rm = TRUE)
   is_slowest         <- rt > quintile_threshold
@@ -31,6 +32,11 @@ compute_fa_windows <- function(subject_data) {
     fa_rate = sapply(window_starts, function(s) {
       idx <- which(trials >= s & trials < s + window_width)
       mean(feedback[idx] == -1, na.rm = TRUE)
+    }),
+
+    timeout_rate = sapply(window_starts, function(s) {
+      idx <- which(trials >= s & trials < s + window_width)
+      mean(timeout[idx] == 1, na.rm = TRUE)
     }),
     
     slowest_quintile = sapply(window_starts, function(s) {
@@ -73,7 +79,7 @@ fa_windows_df <- data %>%
 
 
 # Z-score all measures per subject
-cols_to_zscore <- c("fa_rate", "slowest_quintile",
+cols_to_zscore <- c("fa_rate", "timeout_rate", "slowest_quintile",
                     "RT_avg", "rtcv", 
                     "baseline", "derivative")
 

@@ -142,7 +142,7 @@ def run_stats(params_df):
 
 def main():
     df = pd.read_csv(DATA_PATH)
-    plt.rcParams['font.family'] = 'Arial'
+    plt.rcParams['font.family'] = 'Helvetica'
 
     records = []
     for condition in [0, 1]:
