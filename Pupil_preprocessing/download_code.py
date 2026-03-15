@@ -14,15 +14,13 @@ os.makedirs(hdf_dest, exist_ok=True)
 for subj in os.listdir(source_root):
     subj_path = os.path.join(source_root, subj)
 
-    # Only process numeric subject folders >= 020
     if os.path.isdir(subj_path) and subj.isdigit() and int(subj) >= 20:
         
-        # ---- Copy ASC file ----
         raw_folder = os.path.join(subj_path, "raw_eyelink_data")
         if os.path.exists(raw_folder):
             asc_files = [f for f in os.listdir(raw_folder) if f.endswith(".asc")]
             if asc_files:
-                asc_file = asc_files[0]  # first ASC file
+                asc_file = asc_files[0]  
                 src_asc = os.path.join(raw_folder, asc_file)
                 dst_asc = os.path.join(asc_dest, asc_file)
                 shutil.copy2(src_asc, dst_asc)
@@ -32,7 +30,6 @@ for subj in os.listdir(source_root):
         else:
             print(f"No raw_eyelink_data folder for subject {subj}")
 
-        # ---- Copy HDF file ----
         alf_folder = os.path.join(subj_path, "alf")
         if os.path.exists(alf_folder):
             src_hdf = os.path.join(alf_folder, "processed_pupil.hdf")
