@@ -2,13 +2,15 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 
+#exploratory analyses for min. instructions condition
+
 df = pd.read_csv(r"C:\Users\lucij\Desktop\Leiden\Year 2\Thesis Project\2024_data\replication_processing.csv")
 
-df = df[df['instructions'] == 1]
+df = df[df['instructions'] == 0]
 
 z_cols = [col for col in df.columns if col.endswith('_z')]
 
-#time-on-task slopes for behavior + pupil
+#time-on-task slopes for behavior + pupil 
 def fit_slope(series):
     x = np.arange(len(series))
     mask = ~np.isnan(series)

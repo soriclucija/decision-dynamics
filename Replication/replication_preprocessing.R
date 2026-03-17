@@ -1,6 +1,5 @@
 library(tidyverse)
 
-# Load data
 data <- read.csv("C:/Users/lucij/Desktop/Leiden/Year 2/Thesis Project/2024_data/combined_dataset.csv")
 
 window_width <- 50
@@ -10,7 +9,7 @@ n_trials     <- 600
 compute_fa_windows <- function(subject_data) {
   
   subject_data <- subject_data[order(subject_data$trial_number), ]
-  
+
   trials   <- subject_data$trial_number
   feedback <- subject_data$feedbackType
   contrast <- subject_data$stimContrast
@@ -31,42 +30,49 @@ compute_fa_windows <- function(subject_data) {
     
     fa_rate = sapply(window_starts, function(s) {
       idx <- which(trials >= s & trials < s + window_width)
-      mean(feedback[idx] == -1, na.rm = TRUE)
+      valid_idx <- idx[contrast[idx] != 0]
+      mean(feedback[valid_idx] == -1, na.rm = TRUE)
     }),
-
+    
     timeout_rate = sapply(window_starts, function(s) {
       idx <- which(trials >= s & trials < s + window_width)
-      mean(timeout[idx] == 1, na.rm = TRUE)
+      valid_idx <- idx[contrast[idx] != 0]
+      mean(timeout[valid_idx] == 1, na.rm = TRUE)
     }),
     
     slowest_quintile = sapply(window_starts, function(s) {
       idx <- which(trials >= s & trials < s + window_width)
-      if (length(idx) == 0) return(NA)
-      mean(is_slowest[idx], na.rm = TRUE)
+      valid_idx <- idx[contrast[idx] != 0]
+      if (length(valid_idx) == 0) return(NA)
+      mean(is_slowest[valid_idx], na.rm = TRUE)
     }),
     
     RT_avg = sapply(window_starts, function(s) {
       idx <- which(trials >= s & trials < s + window_width)
-      if (length(idx) == 0) return(NA)
-      mean(rt[idx], na.rm = TRUE)
+      valid_idx <- idx[contrast[idx] != 0]
+      if (length(valid_idx) == 0) return(NA)
+      mean(rt[valid_idx], na.rm = TRUE)
     }),
     
     rtcv = sapply(window_starts, function(s) {
       idx <- which(trials >= s & trials < s + window_width)
-      if (length(idx) == 0) return(NA)
-      sd(rt[idx], na.rm = TRUE) / subject_rt_mean
+      valid_idx <- idx[contrast[idx] != 0]
+      if (length(valid_idx) == 0) return(NA)
+      sd(rt[valid_idx], na.rm = TRUE) / subject_rt_mean
     }),
     
     baseline = sapply(window_starts, function(s) {
       idx <- which(trials >= s & trials < s + window_width)
-      if (length(idx) == 0) return(NA)
-      mean(pupil[idx], na.rm = TRUE)
+      valid_idx <- idx[contrast[idx] != 0]
+      if (length(valid_idx) == 0) return(NA)
+      mean(pupil[valid_idx], na.rm = TRUE)
     }),
     
     derivative = sapply(window_starts, function(s) {
       idx <- which(trials >= s & trials < s + window_width)
-      if (length(idx) < 2) return(NA)
-      mean(diff(pupil[idx]), na.rm = TRUE)
+      valid_idx <- idx[contrast[idx] != 0]
+      if (length(valid_idx) < 2) return(NA)
+      mean(diff(pupil[valid_idx]), na.rm = TRUE)
     })
   )
 }
