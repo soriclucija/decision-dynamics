@@ -63,8 +63,8 @@ def make_2x2_plot(data, color, filename):
             alpha=0.2
         )
 
-        ax.set_xlabel('Time on task', fontproperties=hv_large, labelpad=10) #operationalized using chronological analysis windows (see replication_processing.R for details)
-        ax.set_ylabel(label, fontproperties=hv_large, labelpad=10)
+        ax.set_xlabel('Time on task', fontproperties=hv_large, labelpad=4) #operationalized using chronological analysis windows (see replication_processing.R for details)
+        ax.set_ylabel(label, fontproperties=hv_large, labelpad=4)
 
         tick_positions = [0, 1]
         tick_labels    = ['Start', 'End']

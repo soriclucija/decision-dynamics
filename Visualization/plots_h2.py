@@ -35,8 +35,8 @@ def plot_baseline_derivative(df_sub, color, filename):
         ax.plot(x, y, color=color, linewidth=2.5)
         ax.fill_between(x, y - sem, y + sem, color=color, alpha=0.2)
 
-        ax.set_xlabel('Time on task', fontproperties=hv_large, labelpad=10)
-        ax.set_ylabel(label, fontproperties=hv_large, labelpad=10)
+        ax.set_xlabel('Time on task', fontproperties=hv_large, labelpad=4)
+        ax.set_ylabel(label, fontproperties=hv_large, labelpad=4)
 
         tick_positions = [0, 1]
         tick_labels    = ['Start', 'End']
