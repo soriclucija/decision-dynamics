@@ -12,12 +12,12 @@ mpl.rcParams['font.family'] = 'Helvetica'
 mpl.rcParams['font.sans-serif'] = ['Helvetica']
 
 hv       = fm.FontProperties(family='Helvetica', size=12)
-hv_large = fm.FontProperties(family='Helvetica', size=14)
+hv_large = fm.FontProperties(family='Helvetica', size=16)
 
 measures = [
     ('fa_rate_z',          'Lapse rate (z, %)',               'percent', 25),
     ('slowest_quintile_z', 'Slowest 1/5th of trial (z, %)',  'percent', 25),
-    ('RT_avg_z',           'Response time (z, s)',             'sec',     0.25),
+    ('RT_avg_z',           'Response time (z, s)',             'sec',     0.3),
     ('rtcv_z',             'RT SD / mean RT (z)',               'ratio',   0.25),
 ]
 
@@ -26,7 +26,7 @@ COLOR = "#2e2e2e"
 
 def make_2x2_plot(data, filename):
 
-    # Average across blocks per participant × window
+    # average across blocks per participant × window
     data_avg = (
         data
         .groupby(['participant', 'window'])[
@@ -58,11 +58,11 @@ def make_2x2_plot(data, filename):
         y   = mean_series.values
         sem = sem_series.values
 
-        ax.plot(x, y, color=COLOR, linewidth=2.2)
-        ax.fill_between(x, y - sem, y + sem, color=COLOR, alpha=0.2)
+        ax.plot(x, y, color=COLOR, linewidth=3)
+        ax.fill_between(x, y - sem, y + sem, color=COLOR, alpha=0.15)
 
         ax.set_xlabel('Time on task',  fontproperties=hv_large, labelpad=4)
-        ax.set_ylabel(label,           fontproperties=hv_large, labelpad=4)
+        ax.set_ylabel(label,           fontproperties=hv_large, labelpad=12)
 
         ax.set_xticks([0, 1])
         ax.set_xticklabels(['Start', 'End'])
@@ -78,14 +78,14 @@ def make_2x2_plot(data, filename):
 
         ax.tick_params(axis='both', which='both',
                        length=4, width=1,
-                       direction='out', pad=6,
-                       colors='black', labelsize=11)
+                       direction='out', pad=10,
+                       colors='black', labelsize=14)
 
         sns.despine(ax=ax, trim=False)
         ax.spines['bottom'].set_position(('outward', 6))
         ax.spines['left'].set_position(('outward', 6))
 
-    plt.tight_layout()
+    plt.tight_layout(h_pad=3.5, w_pad=3)
     plt.savefig(filename, dpi=600, bbox_inches='tight')
     plt.show()
 

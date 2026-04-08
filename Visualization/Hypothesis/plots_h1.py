@@ -12,12 +12,12 @@ mpl.rcParams['font.family'] = 'Helvetica'
 mpl.rcParams['font.sans-serif'] = ['Helvetica']
 
 hv       = fm.FontProperties(family='Helvetica', size=12)
-hv_large = fm.FontProperties(family='Helvetica', size=14)
+hv_large = fm.FontProperties(family='Helvetica', size=16)
 
 measures = [
     ('fa_rate',            'Lapse rate (%)',          'percent', 5),   
     ('slowest_quintile',   'Slowest 1/5th of trials (%)', 'percent', 10),  
-    ('RT_avg',             'Response time (s)',      'sec',     0.25), 
+    ('RT_avg',             'Response time (s)',      'sec',     0.3), 
     ('rtcv',               'RT SD / mean RT',        'ratio',   0.2)  
 ]
 
@@ -54,17 +54,17 @@ def make_2x2_plot(data, color, filename):
         y = mean_series.values
         sem = sem_series.values
 
-        ax.plot(x, y, color=color, linewidth=2.2)
+        ax.plot(x, y, color=color, linewidth=3)
         ax.fill_between(
             x,
             y - sem,
             y + sem,
             color=color,
-            alpha=0.2
+            alpha=0.15
         )
 
         ax.set_xlabel('Time on task', fontproperties=hv_large, labelpad=4) #operationalized using chronological analysis windows (see replication_processing.R for details)
-        ax.set_ylabel(label, fontproperties=hv_large, labelpad=4)
+        ax.set_ylabel(label, fontproperties=hv_large, labelpad=12)
 
         tick_positions = [0, 1]
         tick_labels    = ['Start', 'End']
@@ -83,14 +83,14 @@ def make_2x2_plot(data, color, filename):
 
         ax.tick_params(axis='both', which='both',
                        length=4, width=1,
-                       direction='out', pad=6,
-                       colors='black', labelsize=11)
+                       direction='out', pad=10,
+                       colors='black', labelsize=14)
 
         sns.despine(ax=ax, trim=False)
         ax.spines['bottom'].set_position(('outward', 6))
         ax.spines['left'].set_position(('outward', 6))
 
-    plt.tight_layout()
+    plt.tight_layout(h_pad=3.5, w_pad=3)
     plt.savefig(filename, dpi=600, bbox_inches='tight')
     plt.show()
 
