@@ -106,8 +106,9 @@ def run_stats(params_df):
 
     for col, name in [
         ('sigma', 'Threshold (σ)'),
-        ('lapse', 'Lapse rate (λ)'),
+        ('lapse', 'Lapse high (λ)'),
         ('mu',    'Bias'),
+        ('gamma', 'Lapse low (γ)'),
     ]:
         vals0 = params_df[params_df['condition'] == 0][col].values
         vals1 = params_df[params_df['condition'] == 1][col].values
@@ -146,10 +147,11 @@ def main():
                     'mu':        mu,
                     'sigma':     sigma,
                     'lapse':     lam,
+                    'gamma':     gamma,
                 })
 
     params_df = pd.DataFrame(records)
-    print(params_df.groupby('condition')[['sigma', 'lapse', 'mu']].describe())
+    print(params_df.groupby('condition')[['sigma', 'lapse', 'mu', 'gamma']].describe())
 
     p_vals = run_stats(params_df)
 

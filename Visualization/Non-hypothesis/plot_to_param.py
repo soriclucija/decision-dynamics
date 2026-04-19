@@ -121,7 +121,6 @@ def plot_panel(ax, vals_by_cond, ylabel, yticks=None, pct_fmt=False):
 def main():
     df = pd.read_csv(DATA_PATH)
 
-    # ---------- psychometric fits ----------
     records = []
     for condition in [0, 1]:
         subset = df[df['instructions'] == condition]
@@ -130,36 +129,34 @@ def main():
             if pars is not None:
                 mu, sigma, gamma, lam = pars
                 records.append({'condition': condition, 'subject': subj,
-                                'sigma': sigma, 'lapse': lam})
+                                'sigma': sigma, 'lapse': lam, 'gamma': gamma})
 
     params_df = pd.DataFrame(records)
 
-    # ---------- timeout rates ----------
     timeout_rates = (
         df.groupby(['subject', 'instructions'])
           .apply(lambda g: g['timeout'].sum() / len(g), include_groups=False)
           .reset_index(name='timeout_rate')
     ).rename(columns={'instructions': 'condition'})
 
-    # ---------- figure ----------
     sns.set_style("ticks")
     mpl.rcParams['font.family']                 = 'Helvetica'
     mpl.rcParams['font.sans-serif']             = ['Helvetica']
     mpl.rcParams['axes.formatter.use_mathtext'] = False
 
-    fig, axes = plt.subplots(1, 3, figsize=(10, 5))
+    fig, axes = plt.subplots(1, 3, figsize=(10, 4))
 
     plot_panel(
         axes[0],
-        vals_by_cond={c: params_df[params_df['condition'] == c]['sigma'].values for c in [0, 1]},
-        ylabel='Threshold',
-        yticks=[0, 0.4, 0.8],
+        vals_by_cond={c: params_df[params_df['condition'] == c]['gamma'].values for c in [0, 1]},
+        ylabel='Lapse rate (left)',
+        yticks=[0.0, 0.15, 0.30],
     )
 
     plot_panel(
         axes[1],
         vals_by_cond={c: params_df[params_df['condition'] == c]['lapse'].values for c in [0, 1]},
-        ylabel='Lapse rate (proportion)',
+        ylabel='Lapse rate (right)',
         yticks=[0.0, 0.15, 0.30],
     )
 

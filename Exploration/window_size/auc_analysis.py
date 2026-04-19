@@ -40,7 +40,7 @@ for csv_path in csv_files:
     df = pd.read_csv(csv_path)
 
     all_subj_plain.append(
-        run_regressions(df, filename, window_size, controlled=True) #change to False for uncontrolled
+        run_regressions(df, filename, window_size, controlled=False) #change to False for uncontrolled
     )
 
 subj_plain = pd.concat(all_subj_plain, ignore_index=True)

@@ -290,7 +290,7 @@ def plot_individual_quad_auc(subj_df):
                     mpl.transforms.ScaledTranslation(0, -0.2, fig.dpi_scale_trans)
                 )
 
-        filename = f'quad_auc_controlled.png'
+        filename = f'quad_auc_controlled_1.png'
         plt.savefig(filename, dpi=600, bbox_inches='tight')
         plt.close(fig)
         print(f"Saved: {filename}")
