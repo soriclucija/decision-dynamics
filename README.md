@@ -4,7 +4,6 @@ MSc Thesis project @ Leiden University, 25/26
 
 This repository contains all code developed for the master's thesis *Tracking Behavioral and Physiological Dynamics in Sustained Perceptual Decisions*. The project investigates how behavioral and physiological signals (primarily pupillometry) evolve over the course of sustained perceptual decision-making, including a confirmatory replication of prior findings and a range of exploratory analyses.
 
----
 
 ## Repository Structure
 
@@ -23,7 +22,6 @@ This repository contains all code developed for the master's thesis *Tracking Be
 └── Visualization/             # All figures and plots generated for the thesis
 ```
 
----
 
 ## Folder Descriptions
 
@@ -55,13 +53,11 @@ The core of the thesis. Contains all confirmatory (pre-registered) analyses exam
 ### Visualization
 Scripts and notebooks used to generate all figures appearing in the thesis, including pupil time-course plots, performance metrics, and summary statistics visualizations.
 
----
 
 ## Context
 
 This project was conducted as part of a master's thesis in the 2025/2026 academic year. The primary data sources are behavioral responses and pupillometric recordings collected during a sustained perceptual decision-making task. A key component of the thesis is a confirmatory replication of previously published findings, complemented by a series of exploratory analyses to assess the robustness and generalizability of the results.
 
----
 
 ## Reference
 
