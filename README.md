@@ -4,7 +4,6 @@ MSc Thesis project @ Leiden University, 25/26
 
 This repository contains all code developed for the master's thesis *Tracking Behavioral and Physiological Dynamics in Sustained Perceptual Decisions*. The project investigates how behavioral and physiological signals (primarily pupillometry) evolve over the course of sustained perceptual decision-making, including a confirmatory replication of prior findings and a range of exploratory analyses.
 
----
 
 ## Repository Structure
 
@@ -23,47 +22,42 @@ This repository contains all code developed for the master's thesis *Tracking Be
 └── Visualization/             # All figures and plots generated for the thesis
 ```
 
----
 
 ## Folder Descriptions
 
-### `Cleaning/`
+### Cleaning
 Scripts for merging behavioral response data with pupillometric recordings and applying data cleaning procedures (e.g., artifact removal, trial filtering).
 
-### `Descriptives/`
+### Descriptives
 A Jupyter notebook providing an overview of the sample's descriptive statistics, including participant demographics and task performance summaries.
 
-### `EEG_Preprocessing/`
+### EEG_Preprocessing
 A preprocessing pipeline developed during an EEG pilot study. Although EEG data were ultimately not included in the final thesis, this pipeline was developed as part of the original research plan and is retained here for completeness.
 
-### `Exploration/`
+### Exploration
 
-- **`min-inst_replication/`** — Exploratory analyses of the minimal instructions condition, following the same analytic steps as the confirmatory replication to allow for comparison.
-- **`window-size/`** — Implements sliding window preprocessing across a range of window sizes. Includes AUC (Area Under the Curve) calculations to assess whether key findings are robust to the choice of window size.
-- **`with_no_contrast/`** — Investigates how excluding no-contrast trials during preprocessing affects the results, serving as a robustness check on the data cleaning decisions.
+- **min-inst_replication** — Exploratory analyses of the minimal instructions condition, following the same analytic steps as the confirmatory replication to allow for comparison.
+- **window-size** — Implements sliding window preprocessing across a range of window sizes. Includes AUC (Area Under the Curve) calculations to assess whether key findings are robust to the choice of window size.
+- *with_no_contrast** — Investigates how excluding no-contrast trials during preprocessing affects the results, serving as a robustness check on the data cleaning decisions.
 
-### `Pupil_preprocessing/`
+### Pupil_preprocessing
 Preprocesses raw pupillary time-series data into trial-averaged pupil dilation signals ready for downstream analysis.
 
-### `Re-analyzing_VDB/`
+### Re-analyzing_VDB
 Code developed to reproduce the key findings reported in:
 > van den Brink, R. L., et al. (2016). *...*
 
-This serves as a baseline and sanity check for the analysis approach used in the thesis.
-
-### `Replication/`
+### Replication
 The core of the thesis. Contains all confirmatory (pre-registered) analyses examining behavioral and physiological dynamics in sustained perceptual decision-making.
 
-### `Visualization/`
+### Visualization
 Scripts and notebooks used to generate all figures appearing in the thesis, including pupil time-course plots, performance metrics, and summary statistics visualizations.
 
----
 
 ## Context
 
 This project was conducted as part of a master's thesis in the 2025/2026 academic year. The primary data sources are behavioral responses and pupillometric recordings collected during a sustained perceptual decision-making task. A key component of the thesis is a confirmatory replication of previously published findings, complemented by a series of exploratory analyses to assess the robustness and generalizability of the results.
 
----
 
 ## Reference
 
