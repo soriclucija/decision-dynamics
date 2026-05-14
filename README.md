@@ -21,7 +21,7 @@ This repository contains all code developed for the master's thesis *Tracking Be
 │   ├── Preparing_data/        # Preprocesses VDB files to fit the current analytical pipeline.
 │   ├── Stats_VDB/             # Main reproduction.
 ├── Replication/               # Main confirmatory analyses of the thesis.
-└── Visualization/             # All figures and plots generated for the thesis, separated by hypothesis VS non-hypotheses.
+└── Visualization/             # All figures and plots generated for the thesis, separated by hypothesis VS non-hypothesis.
 ```
 
 
