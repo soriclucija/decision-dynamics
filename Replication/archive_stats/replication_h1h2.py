@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 
-df = pd.read_csv(r"C:\Users\lucij\Desktop\Leiden\Year 2\Thesis Project\2024_data\replication_processing.csv")
+df = pd.read_csv(r"C:\Users\lucij\Desktop\Leiden\Year 2\Thesis Project\2024_data\timed_replication_processed.csv")
 
-df = df[df['instructions'] == 1]
+df = df[df['instructions'] == 0]
 
 z_cols = [col for col in df.columns if col.endswith('_z')]
 
