@@ -12,7 +12,7 @@ from auc_utils import (
 CSV_FOLDER  = r"C:\Users\lucij\Desktop\Leiden\Year 2\Thesis Project\2024_data\window_final"
 OUTPUT_FILE = r"C:\Users\lucij\Desktop\Leiden\Year 2\Thesis Project\2024_data\window_final\regression_results.xlsx"
  
-WINDOW_SIZE_MAP = {
+WINDOW_SIZE_MAP = { #these are based on original sizes, adapted for timing differences
     "window12.csv":  12,
     "window20.csv":  20,
     "window28.csv":  28,

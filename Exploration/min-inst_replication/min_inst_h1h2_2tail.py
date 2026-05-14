@@ -5,7 +5,7 @@ from statsmodels.stats.multitest import multipletests
 
 df = pd.read_csv(r"C:\Users\lucij\Desktop\Leiden\Year 2\Thesis Project\2024_data\timed_replication_processed.csv")
 
-df = df[df['instructions'] == 0]
+df = df[df['instructions'] == 0] #exploratory analyses on minimal instructions condition
 
 z_cols = [col for col in df.columns if col.endswith('_z')]
 

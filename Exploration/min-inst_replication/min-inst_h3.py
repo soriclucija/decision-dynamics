@@ -4,7 +4,7 @@ from scipy import stats
 from statsmodels.stats.multitest import multipletests
 
 df = pd.read_csv(r"C:\Users\lucij\Desktop\Leiden\Year 2\Thesis Project\2024_data\timed_replication_processed.csv")
-df = df[df['instructions'] == 0]
+df = df[df['instructions'] == 0] #exploratory analyses on minimal instructions condition
 
 pupil_cols    = ['baseline_z', 'derivative_z']
 behavior_cols = ['fa_rate_z', 'slowest_quintile_z', 'RT_avg_z', 'rtcv_z']
