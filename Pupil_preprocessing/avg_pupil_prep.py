@@ -144,6 +144,6 @@ for beh_file in os.listdir(beh_folder):
     )
 
     # save
-    out_path = os.path.join(output_folder, f"{subj_id}_combined.csv")
+    out_path = os.path.join(output_folder, f"{subj_id}_combined.csv") #these were further combined into a single file called combined_dataset.csv - no code for that since it was just joining all these files together
     combined_df.to_csv(out_path, index=False)
     print(f"Saved {out_path}")
